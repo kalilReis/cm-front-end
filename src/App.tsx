@@ -8,25 +8,17 @@ import { load } from "./store/ducks/products/actions"
 import { ApplicationState } from "./store"
 
 const App: React.FC = () => {
-  const [perPageInput, setPerPageInput] = useState(0)
   const [search, setSearch] = useState("")
+  const [pickedPage, setPickedPage] = useState(1)
   const { products } = useSelector((state: ApplicationState) => state)
   const dispatch = useDispatch()
 
-  const { perPage = 0, totalPages = 0 } = products.data.pagination
-  const total = perPage * totalPages
+  const { perPage = 0, totalPages = 0 } = products.data.pagination //FIXME!! SET DFEAULT VALUE INTO INITIAL STATE
+  const totalProducts = perPage * totalPages
 
   useEffect(() => {
-    setPerPageInput(perPage)
-  }, [products])
-
-  useEffect(() => {
-    dispatch(load("", 1, 10))
-  }, [])
-
-  useEffect(() => {
-    dispatch(load(search, 1, 10))
-  }, [search])
+    dispatch(load(search, pickedPage, 10))
+  }, [search, pickedPage])
 
   function handleSearch(e: any) {
     setSearch(e.target.value)
@@ -45,7 +37,7 @@ const App: React.FC = () => {
           <h1>{search ? search : "Lista de produtos"}</h1>
         </div>
         <div>
-          <h4>{total} PRODUTOS ENCONTRADOS</h4>
+          <h4>{totalProducts} PRODUTOS ENCONTRADOS</h4>
         </div>
       </StyledHeader>
       <StyledMain>
@@ -53,12 +45,12 @@ const App: React.FC = () => {
       </StyledMain>
       <StyledFooter>
         <div>
-          <input type="text" value={perPageInput + " produtos por página"} />
+          <label>{perPage + " produtos por página"}</label>
         </div>
         <PagePicker
-          totalPages={15}
-          setSelectedPage={page => {
-            console.log(page)
+          totalPages={totalPages}
+          handlePickedPage={page => {
+            setPickedPage(page)
           }}
         />
       </StyledFooter>
@@ -103,6 +95,7 @@ const StyledFooter = styled.footer`
   height: 10%;
   z-index: 99;
   background: #fff;
+  padding: 0.5rem;
 
   display: flex;
   flex-direction: row;

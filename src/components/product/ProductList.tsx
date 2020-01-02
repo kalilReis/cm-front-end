@@ -1,8 +1,5 @@
-import React, { useEffect } from "react"
-import { useSelector, useDispatch } from "react-redux"
-import { ApplicationState } from "../../store"
+import React from "react"
 import styled from "styled-components"
-import { load } from "../../store/ducks/products/actions"
 import { Product } from "../../store/ducks/products/types"
 
 interface ProductListProps {
