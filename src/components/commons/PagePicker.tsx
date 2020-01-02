@@ -3,80 +3,103 @@ import styled from "styled-components"
 
 interface PagePickerProps {
   totalPages: number
-  handlePickedPage: (page: number) => void
+  returnPickedPage: (page: number) => void
 }
+const LIMIT = 5
 
 const arr = (num: number) =>
   Array.from(Array(num).keys())
-    .slice(num - 5, num)
+    .slice(num - LIMIT, num)
     .map(n => n + 1)
 
 const PagePicker: React.FC<PagePickerProps> = ({
   totalPages,
-  handlePickedPage
+  returnPickedPage
 }) => {
-  const LIMIT = 5
   const [pagePicked, setPagePicked] = useState(1)
-  const [numPages, setNumPages] = useState()
+  const [showedPages, setShowedPages] = useState()
+  const [nextBtnDisabled, setNextBtnDisabled] = useState(false)
+  const [prevBtnsDisabled, setPrevBtnsDisabled] = useState(true)
 
   useEffect(() => {
-    setNumPages(totalPages < LIMIT ? totalPages : LIMIT)
+    setShowedPages(totalPages < LIMIT ? totalPages : LIMIT)
   }, [totalPages])
 
-  function handleClick(page: number) {
-    handlePickedPage(page)
-    setPagePicked(page)
-  }
+  useEffect(() => {
+    returnPickedPage(pagePicked)
 
-  function nextPage(lastPage: number) {
-    const next = pagePicked + 1
+    const MIDDLE = showedPages - 2
+    const IS_NEXT = pagePicked > MIDDLE
+    const IS_PREV = pagePicked < MIDDLE
+    const IS_LAST_PAGE = pagePicked === totalPages
+    const IS_FIRST_PAGE = pagePicked === 1
 
-    if (next + 1 === lastPage && lastPage < totalPages) {
-      setNumPages(numPages + 1)
+    if (IS_LAST_PAGE) {
+      setShowedPages(totalPages)
+    } else if (IS_NEXT && showedPages < totalPages) {
+      const IS_BEFORE_LAST = showedPages + 1 === totalPages
+      if (pagePicked === showedPages && !IS_BEFORE_LAST) {
+        setShowedPages(showedPages + 2)
+      } else {
+        setShowedPages(showedPages + 1)
+      }
+    } else if (IS_PREV && pagePicked >= 3) {
+      if (pagePicked == MIDDLE - 1 && pagePicked !== 2) {
+        setShowedPages(showedPages - 1)
+      } else if (pagePicked == MIDDLE - 1 && pagePicked !== 1) {
+        setShowedPages(showedPages - 2)
+      }
+    } else if (IS_FIRST_PAGE) {
+      setShowedPages(LIMIT)
     }
-    setPagePicked(next)
-    handlePickedPage(next)
-  }
 
-  function prevPage(limitPrevPage: number) {
-    console.log("limitPrevPage=" + limitPrevPage)
-    const prev = pagePicked - 1
-
-    if (prev - 2 === limitPrevPage) {
-      setNumPages(numPages - 1)
-    }
-
-    setPagePicked(prev)
-    handlePickedPage(prev)
-  }
+    setNextBtnDisabled(pagePicked === totalPages)
+    setPrevBtnsDisabled(pagePicked === 1)
+  }, [pagePicked])
 
   return (
     <StyledPagePicker>
-      <button key={"a"}>{`|<`} </button>
       <button
+        disabled={prevBtnsDisabled}
+        onClick={() => {
+          setPagePicked(1)
+        }}
+        key={"a"}
+      >{`|<`}</button>
+      <button
+        disabled={prevBtnsDisabled}
         key={"b"}
         onClick={() => {
-          prevPage(numPages - LIMIT)
+          setPagePicked(pagePicked - 1)
         }}
       >{`<`}</button>
-      {arr(numPages).map(p => (
+      {arr(showedPages).map(pageNum => (
         <button
-          key={p}
-          className={pagePicked === p ? "selected" : ""}
-          onClick={() => handleClick(p)}
+          key={pageNum}
+          className={pagePicked === pageNum ? "selected" : ""}
+          onClick={() => setPagePicked(pageNum)}
         >
-          {p}
+          {pageNum}
         </button>
       ))}
       <button
+        disabled={nextBtnDisabled}
         key={"c"}
         onClick={() => {
-          nextPage(numPages)
+          setPagePicked(pagePicked + 1)
         }}
       >{`>`}</button>
-      <button key={"d"}>{`>|`}</button>
+      <button
+        disabled={nextBtnDisabled}
+        onClick={() => {
+          setPagePicked(totalPages)
+        }}
+        key={"d"}
+      >{`>|`}</button>
       <label>
-        {numPages}/{totalPages}
+        picked={pagePicked} total={totalPages} showed= [
+        {showedPages - LIMIT + 1}..
+        {showedPages}] showedPages={showedPages}
       </label>
     </StyledPagePicker>
   )

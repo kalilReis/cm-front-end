@@ -49,7 +49,7 @@ const App: React.FC = () => {
         </div>
         <PagePicker
           totalPages={totalPages}
-          handlePickedPage={page => {
+          returnPickedPage={page => {
             setPickedPage(page)
           }}
         />
