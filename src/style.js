@@ -5,6 +5,7 @@ const GlobalStyle = createGlobalStyle`
     html {
         box-sizing: border-box;
         font-size: 16px;
+        color: rgb(102, 102, 102);
     }
 
     *, *:before, *:after {

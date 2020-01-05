@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { load } from "./store/ducks/products/actions";
 import { ApplicationState } from "./store";
 import PagePicker from "./components/commons/PagePicker";
+import Dropup from "./components/commons/Dropup";
 
 const App: React.FC = () => {
   const [search, setSearch] = useState("");
@@ -44,7 +45,7 @@ const App: React.FC = () => {
       </StyledMain>
       <StyledFooter>
         <div>
-          <label>{10 + " produtos por página"}</label>
+          <Dropup />
         </div>
         <PagePicker
           activePage={activePage}
