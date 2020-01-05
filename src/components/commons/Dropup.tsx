@@ -1,49 +1,54 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
-export default function Dropup() {
-  const [picked, setPicked] = useState(16);
+interface DropupOption {
+  id: number;
+  label: string;
+}
+interface DropupProps {
+  options: DropupOption[];
+  onChange: (option: DropupOption) => void;
+}
 
-  const options = [4, 8, 16, 32];
+export const Dropup: React.FC<DropupProps> = ({ onChange, options }) => {
+  const [picked, setPicked] = useState<DropupOption>(options[0]);
 
-  useEffect(() => {}, [picked]);
+  useEffect(() => {
+    onChange(picked);
+  }, [picked]);
 
   return (
     <StyledDropup>
-      <div className="dropup">
-        <button className="dropbtn">{picked} produtos por página</button>
-        <div className="dropup-content">
-          {options.map(num => {
-            return (
-              <a
-                onClick={() => {
-                  setPicked(num);
-                }}
-              >
-                {num} produtos por página
-              </a>
-            );
-          })}
-        </div>
+      <button className="dropbtn">{picked.label}</button>
+      <div className="dropup-content">
+        {options.map(option => {
+          return (
+            <a
+              id={String(option.id)}
+              onClick={() => {
+                setPicked(option);
+              }}
+            >
+              {option.label}
+            </a>
+          );
+        })}
       </div>
     </StyledDropup>
   );
-}
+};
 
 const StyledDropup = styled.div`
+  position: relative;
+  display: inline-block;
+  border: 1px solid black;
+
   .dropbtn {
     width: 200px;
     padding: 16px;
     font-size: 16px;
     border: none;
     background: white;
-  }
-
-  /* The container <div> - needed to position the dropup content */
-  .dropup {
-    position: relative;
-    display: inline-block;
-    border: 1px solid black;
   }
 
   /* Dropup content (Hidden by Default) */
@@ -54,7 +59,6 @@ const StyledDropup = styled.div`
     background-color: white;
     min-width: 200px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-
     z-index: 1;
   }
 
@@ -72,12 +76,14 @@ const StyledDropup = styled.div`
   }
 
   /* Show the dropup menu on hover */
-  .dropup:hover .dropup-content {
+  &:hover .dropup-content {
     display: block;
   }
 
   /* Change the background color of the dropup button when the dropup content is shown */
-  .dropup:hover .dropbtn {
+  &:hover .dropbtn {
     background-color: #444f53;
   }
 `;
+
+export default Dropup;

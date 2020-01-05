@@ -11,14 +11,15 @@ import Dropup from "./components/commons/Dropup";
 const App: React.FC = () => {
   const [search, setSearch] = useState("");
   const [activePage, setActivePage] = useState(1);
+  const [pageLimit, setPageLimit] = useState(4);
   const { products } = useSelector((state: ApplicationState) => state);
   const dispatch = useDispatch();
 
   const { totalDocs } = products.data;
 
   useEffect(() => {
-    dispatch(load(search, activePage, 10));
-  }, [search, activePage]);
+    dispatch(load(search, activePage, pageLimit));
+  }, [search, activePage, pageLimit]);
 
   function handleSearch(e: any) {
     setSearch(e.target.value);
@@ -45,7 +46,14 @@ const App: React.FC = () => {
       </StyledMain>
       <StyledFooter>
         <div>
-          <Dropup />
+          <Dropup
+            options={[
+              { id: 4, label: "4 produtos por página" },
+              { id: 8, label: "8 produtos por página" },
+              { id: 16, label: "16 produtos por página" }
+            ]}
+            onChange={option => setPageLimit(option.id)}
+          />
         </div>
         <PagePicker
           activePage={activePage}
