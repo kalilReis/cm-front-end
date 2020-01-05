@@ -31,7 +31,11 @@ const App: React.FC = () => {
         <div className="inline">
           <h2>mmartan</h2>
           <div>
-            <input placeholder="search" type="text" onChange={handleSearch} />
+            <input
+              placeholder="search"
+              type="text"
+              onChange={e => setSearch(e.target.value)}
+            />
           </div>
         </div>
         <div style={{ background: "hsl(0, 0%, 94%)" }}>
