@@ -1,7 +1,14 @@
 import { ProductsState, ProductsTypes, ProducActionTypes } from "./types"
 
 const INITIAL_STATE: ProductsState = {
-  data: {data: [], pagination: {}},
+  data: {
+    docs: [], 
+    totalDocs: 0, 
+    limit: 10,
+    totalPages: 0,
+    page: 1, 
+    pagingCounter: 0 },
+    
   error: false,
   loading: false
 }

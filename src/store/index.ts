@@ -11,7 +11,7 @@ export interface ApplicationState {
 
 const store: Store<ApplicationState> = createStore(
   rootReducer,
-  applyMiddleware(createLogger(), thunkMiddleware)
+  applyMiddleware(thunkMiddleware)
 )
 
 export default store

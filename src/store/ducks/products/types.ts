@@ -28,7 +28,8 @@ export interface LoadFailureActionType {
 export type ProducActionTypes = LoadRequestActionType | LoadSuccessActionType | LoadFailureActionType
 
 /**
- * Data types
+ * 
+ * docs types
  */
 
 export interface Product {
@@ -51,8 +52,12 @@ export interface Pagination {
 }
 
 export interface ProductPagination {
-  data: Product[]
-  pagination: Pagination
+  docs: Product[]
+  totalDocs: number 
+  limit: number
+  totalPages: number
+  page: number
+  pagingCounter: number
 }
 /**
  * State type
