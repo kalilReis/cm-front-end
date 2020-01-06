@@ -18,7 +18,7 @@ const PagePicker: React.FC<PagePickerProps> = props => {
         firstPageText={"|<"}
         lastPageText={">|"}
         prevPageText={"<"}
-        nextPageText={<img src={next} width={"12px"} height={"12px"} />}
+        nextPageText={">"}
         activePage={props.activePage}
         itemsCountPerPage={props.itemsCountPerPage}
         totalItemsCount={props.totalItemsCount}
