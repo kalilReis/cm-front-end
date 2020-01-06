@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Pagination from "react-js-pagination";
+import next from "../../icons/next.svg";
 
 interface PagePickerProps {
   activePage: number;
@@ -17,7 +18,7 @@ const PagePicker: React.FC<PagePickerProps> = props => {
         firstPageText={"|<"}
         lastPageText={">|"}
         prevPageText={"<"}
-        nextPageText={">"}
+        nextPageText={<img src={next} width={"12px"} height={"12px"} />}
         activePage={props.activePage}
         itemsCountPerPage={props.itemsCountPerPage}
         totalItemsCount={props.totalItemsCount}
