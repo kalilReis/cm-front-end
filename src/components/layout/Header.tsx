@@ -33,12 +33,19 @@ export const Header: React.FC<HeaderProps> = ({
             <img src={searchIcon} />
           </div>
           <input
+            value={search}
             placeholder="search"
             type="text"
             onChange={e => setSearch(e.target.value)}
           />
           <div className={"remove-icon"}>
-            <img className={search ? "" : "hide"} src={removeIcon} />
+            <img
+              onClick={() => {
+                setSearch("");
+              }}
+              className={search ? "" : "hide"}
+              src={removeIcon}
+            />
           </div>
         </StyledSearchBar>
       </div>
