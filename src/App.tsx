@@ -8,6 +8,8 @@ import { ApplicationState } from "./store";
 import PagePicker from "./components/commons/PagePicker";
 import Dropup from "./components/commons/Dropup";
 
+import logo from "./icons/logo.svg";
+
 const App: React.FC = () => {
   const [search, setSearch] = useState("");
   const [activePage, setActivePage] = useState(1);
@@ -29,7 +31,7 @@ const App: React.FC = () => {
     <div>
       <StyledHeader>
         <div className="inline">
-          <h2>mmartan</h2>
+          <img src={logo} width={"100px"} height={"50px"} />
           <div>
             <input
               placeholder="search"

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import angleUpArrow from "../../icons/up-arrow.svg";
+import upArrow from "../../icons/up-arrow.svg";
 interface DropupOption {
   id: number;
   label: string;
@@ -21,13 +21,7 @@ export const Dropup: React.FC<DropupProps> = ({ onChange, options }) => {
     <StyledDropup>
       <button className="dropbtn">
         <span>{picked.label}</span>
-        <img
-          src={angleUpArrow}
-          width={"12px"}
-          height={"12px"}
-          className="App-logo"
-          alt="logo"
-        />
+        <img src={upArrow} width={"12px"} height={"12px"} />
       </button>
       <div className="dropup-content">
         {options.map(option => {
@@ -54,7 +48,7 @@ const StyledDropup = styled.div`
 
   .dropbtn {
     width: 230px;
-    padding: 10px 1rem;
+    padding: 8px 1rem;
     font-size: 1rem;
     border: none;
     background: white;

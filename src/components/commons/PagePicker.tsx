@@ -35,7 +35,7 @@ const StyledPagePicker = styled.div`
     li {
       background: #fff;
       border: none;
-      padding: 8px 16px;
+      padding: 8px 1rem;
       a {
         color: #000;
         text-decoration: none;
