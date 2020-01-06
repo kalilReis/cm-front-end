@@ -22,10 +22,6 @@ const App: React.FC = () => {
     dispatch(load(search, activePage, pageLimit));
   }, [search, activePage, pageLimit]);
 
-  function handleSearch(e: any) {
-    setSearch(e.target.value);
-  }
-
   return (
     <div>
       <Header
