@@ -46,10 +46,10 @@ const Image = () => (
 const StyledListContainer = styled.div`
   max-width: 70%;
   ul {
-    border: 1px solid black;
+    border: 1px solid rgb(153, 137, 124);
 
     li {
-      border-bottom: 1px solid black;
+      border-bottom: 1px solid rgb(153, 137, 124);
       height: 9%;
       display: grid;
       grid-template-rows: repeat(6, 100%);

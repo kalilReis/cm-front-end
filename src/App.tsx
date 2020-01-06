@@ -35,7 +35,7 @@ const App: React.FC = () => {
       <StyledMain>
         <ProductList products={products.data.docs} />
       </StyledMain>
-      <StyledFooter>
+      <StyledFooter className="default-border">
         <div>
           <Dropup
             options={[
@@ -58,43 +58,6 @@ const App: React.FC = () => {
   );
 };
 
-const StyledHeader = styled.header`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border: 1px solid black;
-
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 150px;
-  border: 1px solid black;
-  z-index: 99;
-  background: #fff;
-
-  .top-header {
-    border-bottom: 1px solid;
-    box-shadow: 0 4px 2px -2px gray;
-    z-index: 1;
-  }
-
-  .inline {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    margin-top: 10px;
-  }
-
-  .search-display {
-    height: 300px;
-    background: #eeecef;
-    font-size: 50px;
-    p {
-      margin-left: 2rem;
-    }
-  }
-`;
-
 const StyledMain = styled.main`
   display: flex;
   align-items: center;
@@ -103,7 +66,6 @@ const StyledMain = styled.main`
 `;
 
 const StyledFooter = styled.footer`
-  border: 1px solid black;
   position: fixed;
   bottom: 0;
   width: 100%;
