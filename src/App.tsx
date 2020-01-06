@@ -35,7 +35,7 @@ const App: React.FC = () => {
       <StyledMain>
         <ProductList products={products.data.docs} />
       </StyledMain>
-      <StyledFooter className="default-border">
+      <StyledFooter>
         <div>
           <Dropup
             options={[
@@ -77,6 +77,8 @@ const StyledFooter = styled.footer`
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+
+  border-top: 1px solid;
 `;
 
 export default App;

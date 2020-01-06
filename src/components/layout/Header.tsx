@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import logoIcon from "../../icons/logo.svg";
-import searchIcon from "../../icons/search.svg";
-import removeIcon from "../../icons/remove.svg";
 import styled from "styled-components";
+import SearchBar from "../commons/SearchBar";
 
 interface HeaderProps {
   totalProducts: number;
@@ -30,27 +29,11 @@ export const Header: React.FC<HeaderProps> = ({
         <div className="top-header-content">
           <img src={logoIcon} width={"150px"} height={"100%"} />
         </div>
-        <StyledSearchBar className="top-header-content">
-          <div className="search-icon default-border">
-            <img src={searchIcon} />
-          </div>
-          <input
-            className="default-border"
-            value={search}
-            placeholder="Buscar Produtos"
-            type="text"
-            onChange={e => setSearch(e.target.value)}
-          />
-          <div className="remove-icon default-border">
-            <img
-              onClick={() => {
-                setSearch("");
-              }}
-              className={search ? "" : "hide"}
-              src={removeIcon}
-            />
-          </div>
-        </StyledSearchBar>
+        <SearchBar
+          delay={50}
+          placeholder="Buscar Produtos"
+          handleSearchValue={value => setSearch(value)}
+        />
       </div>
       <div className="search-display-container">
         <div>
@@ -101,48 +84,6 @@ const StyledHeader = styled.header`
 
   .products-found-display {
     margin-left: 2rem;
-  }
-`;
-
-const StyledSearchBar = styled.div`
-  display: flex;
-  flex-direction: row;
-  height: 1.5rem;
-
-  input {
-    border-left: none;
-    border-right: none;
-    width: 300px;
-  }
-
-  .search-icon {
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
-    border-right: none;
-    width: 3rem;
-    display: flex;
-    justify-content: center;
-
-    img {
-      width: 10px;
-    }
-  }
-
-  .remove-icon {
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
-    border-left: none;
-    width: 3rem;
-    display: flex;
-    justify-content: center;
-
-    img {
-      width: 12px;
-    }
-
-    img.hide {
-      display: none;
-    }
   }
 `;
 
