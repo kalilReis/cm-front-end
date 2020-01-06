@@ -26,19 +26,22 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <StyledHeader>
-      <div className="top-header inline">
-        <img src={logoIcon} width={"100px"} height={"50px"} />
-        <StyledSearchBar>
-          <div className={"search-icon"}>
+      <div className="top-header">
+        <div className="top-header-content">
+          <img src={logoIcon} width={"150px"} height={"100%"} />
+        </div>
+        <StyledSearchBar className="top-header-content">
+          <div className="search-icon default-border">
             <img src={searchIcon} />
           </div>
           <input
+            className="default-border"
             value={search}
-            placeholder="search"
+            placeholder="Buscar Produtos"
             type="text"
             onChange={e => setSearch(e.target.value)}
           />
-          <div className={"remove-icon"}>
+          <div className="remove-icon default-border">
             <img
               onClick={() => {
                 setSearch("");
@@ -49,15 +52,57 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
         </StyledSearchBar>
       </div>
-      <div className={"search-display"}>
-        <p>{search ? search : "Lista de produtos"}</p>
-      </div>
-      <div className={"products-found-display"}>
-        <h4>{totalProducts} PRODUTOS ENCONTRADOS</h4>
+      <div className="search-display-container">
+        <div>
+          <p>{search ? search : "Lista de produtos"}</p>
+          <h4>{totalProducts} PRODUTOS ENCONTRADOS</h4>
+        </div>
       </div>
     </StyledHeader>
   );
 };
+
+const StyledHeader = styled.header`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 150px;
+  z-index: 99;
+  background: #fff;
+
+  .top-header {
+    z-index: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    box-shadow: 0 4px 2px -2px gray;
+
+    .top-header-content {
+      margin: 1rem 2rem;
+    }
+  }
+
+  .search-display-container {
+    height: 300px;
+    background: #eeecef;
+
+    div {
+      margin: 0rem 2rem;
+      p {
+        font-size: 50px;
+      }
+    }
+  }
+
+  .products-found-display {
+    margin-left: 2rem;
+  }
+`;
 
 const StyledSearchBar = styled.div`
   display: flex;
@@ -65,13 +110,12 @@ const StyledSearchBar = styled.div`
   height: 1.5rem;
 
   input {
-    border: 1px solid black;
     border-left: none;
     border-right: none;
+    width: 300px;
   }
 
   .search-icon {
-    border: 1px solid black;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
     border-right: none;
@@ -85,7 +129,6 @@ const StyledSearchBar = styled.div`
   }
 
   .remove-icon {
-    border: 1px solid black;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
     border-left: none;
@@ -99,42 +142,6 @@ const StyledSearchBar = styled.div`
 
     img.hide {
       display: none;
-    }
-  }
-`;
-const StyledHeader = styled.header`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border: 1px solid black;
-
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 150px;
-  border: 1px solid black;
-  z-index: 99;
-  background: #fff;
-
-  .top-header {
-    border-bottom: 1px solid;
-    box-shadow: 0 4px 2px -2px gray;
-    z-index: 1;
-  }
-
-  .inline {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    margin-top: 10px;
-  }
-
-  .search-display {
-    height: 300px;
-    background: #eeecef;
-    font-size: 50px;
-    p {
-      margin-left: 2rem;
     }
   }
 `;
