@@ -44,8 +44,8 @@ const Image = () => (
 );
 
 const StyledListContainer = styled.div`
+  max-width: 70%;
   ul {
-    max-width: 90%px;
     li {
       border: 1px solid black;
       height: 9%;

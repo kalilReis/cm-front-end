@@ -30,7 +30,7 @@ const App: React.FC = () => {
   return (
     <div>
       <StyledHeader>
-        <div className="inline">
+        <div className="top-header inline">
           <img src={logo} width={"100px"} height={"50px"} />
           <div>
             <input
@@ -43,7 +43,7 @@ const App: React.FC = () => {
         <div className={"search-display"}>
           <p>{search ? search : "Lista de produtos"}</p>
         </div>
-        <div>
+        <div className={"products-found-display"}>
           <h4>{totalDocs} PRODUTOS ENCONTRADOS</h4>
         </div>
       </StyledHeader>
@@ -87,6 +87,12 @@ const StyledHeader = styled.header`
   z-index: 99;
   background: #fff;
 
+  .top-header {
+    border-bottom: 1px solid;
+    box-shadow: 0 4px 2px -2px gray;
+    z-index: 1;
+  }
+
   .inline {
     display: flex;
     flex-direction: row;
@@ -96,7 +102,7 @@ const StyledHeader = styled.header`
 
   .search-display {
     height: 300px;
-    background: hsl(0, 0%, 94%);
+    background: #eeecef;
     font-size: 50px;
     p {
       margin-left: 2rem;
