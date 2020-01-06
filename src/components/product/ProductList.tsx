@@ -16,14 +16,16 @@ const ProductList: React.FC<ProductListProps> = ({ products }) => {
             <Image />
             <Image />
             <Image />
-            <div>
-              <h4>{prod.name}</h4>
+            <div className="prod-description">
+              <span className="name">{prod.name}</span>
               <p>
                 {prod.type} * {prod.size}
               </p>
             </div>
-            <div>
-              R${prod.previousPrice} por R${prod.currentPrice}
+            <div className="prod-prices">
+              <span className="prev-price">R${prod.previousPrice}</span>
+              {` por `}
+              <span className="current-price">R${prod.currentPrice}</span>
             </div>
           </li>
         ))}
@@ -44,17 +46,40 @@ const Image = () => (
 );
 
 const StyledListContainer = styled.div`
-  max-width: 70%;
   ul {
     border: 1px solid rgb(153, 137, 124);
 
     li {
       border-bottom: 1px solid rgb(153, 137, 124);
-      height: 9%;
+      height: 10%;
       display: grid;
       grid-template-rows: repeat(6, 100%);
       grid-template-columns: 10% 10% 10% 10% 30% 30%;
-      justify-content: center;
+      grid-template-areas: "img-a img-b img-c img-d description prices";
+
+      .prod-description {
+        grid-area: description;
+        align-self: center;
+        margin-left: 5%;
+        .name {
+          color: black;
+        }
+      }
+
+      .prod-prices {
+        grid-area: prices;
+        align-self: center;
+        justify-self: end;
+        margin-right: 10%;
+
+        .prev-price {
+          text-decoration: line-through;
+        }
+
+        .current-price {
+          color: black;
+        }
+      }
 
       div {
         margin: 6px;

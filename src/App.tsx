@@ -62,7 +62,7 @@ const StyledMain = styled.main`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 10%;
+  margin: 200px;
 `;
 
 const StyledFooter = styled.footer`

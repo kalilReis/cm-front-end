@@ -92,7 +92,7 @@ const StyledHeader = styled.header`
     background: #eeecef;
 
     div {
-      margin: 0rem 2rem;
+      margin: 1rem 2rem;
       p {
         font-size: 50px;
       }
