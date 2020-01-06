@@ -7,8 +7,7 @@ import { load } from "./store/ducks/products/actions";
 import { ApplicationState } from "./store";
 import PagePicker from "./components/commons/PagePicker";
 import Dropup from "./components/commons/Dropup";
-
-import logo from "./icons/logo.svg";
+import Header from "./components/layout/Header";
 
 const App: React.FC = () => {
   const [search, setSearch] = useState("");
@@ -29,24 +28,10 @@ const App: React.FC = () => {
 
   return (
     <div>
-      <StyledHeader>
-        <div className="top-header inline">
-          <img src={logo} width={"100px"} height={"50px"} />
-          <div>
-            <input
-              placeholder="search"
-              type="text"
-              onChange={e => setSearch(e.target.value)}
-            />
-          </div>
-        </div>
-        <div className={"search-display"}>
-          <p>{search ? search : "Lista de produtos"}</p>
-        </div>
-        <div className={"products-found-display"}>
-          <h4>{totalDocs} PRODUTOS ENCONTRADOS</h4>
-        </div>
-      </StyledHeader>
+      <Header
+        totalProducts={totalDocs}
+        handleSearchValue={value => setSearch(value)}
+      />
       <StyledMain>
         <ProductList products={products.data.docs} />
       </StyledMain>

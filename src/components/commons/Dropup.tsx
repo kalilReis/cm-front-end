@@ -67,7 +67,7 @@ const StyledDropup = styled.div`
   .dropup-content {
     display: none;
     position: absolute;
-    bottom: 40px;
+    bottom: 35px;
     background-color: white;
     min-width: 100%;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
