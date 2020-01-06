@@ -37,12 +37,12 @@ const StyledPagePicker = styled.div`
       border: none;
       padding: 8px 1rem;
       a {
-        color: #000;
+        color: inherit;
         text-decoration: none;
       }
     }
     .active {
-      border: 1px solid black;
+      border: 1px solid rgb(153, 137, 124);
       border-radius: 3px;
     }
   }

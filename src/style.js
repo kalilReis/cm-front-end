@@ -2,6 +2,8 @@ import { createGlobalStyle } from "styled-components"
 
 const GlobalStyle = createGlobalStyle`
     
+    @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600&display=swap');
+
     html {
         box-sizing: border-box;
         font-size: 16px;
@@ -16,15 +18,24 @@ const GlobalStyle = createGlobalStyle`
         margin: 0;
         padding: 0;
         font-weight: normal;
+        font-family: 'Source Sans Pro';
     }
+
+   
 
     ol, ul {
         list-style: none;
     }
 
     *:focus {
-      outline: 0 !important;
+        outline: 0 !important;
     }
+
+    .default-border {
+        border: 1px solid rgb(153, 137, 124);
+    }
+
+   
 
 
 `

@@ -19,7 +19,7 @@ export const Dropup: React.FC<DropupProps> = ({ onChange, options }) => {
 
   return (
     <StyledDropup>
-      <button className="dropbtn">
+      <button className="dropbtn default-border">
         <span>{picked.label}</span>
         <img src={upArrow} width={"12px"} height={"12px"} />
       </button>
@@ -50,16 +50,16 @@ const StyledDropup = styled.div`
     width: 230px;
     padding: 8px 1rem;
     font-size: 1rem;
-    border: none;
     background: white;
-    border: 1px solid black;
     border-radius: 4px;
-
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     img {
       margin-top: 3px;
+    }
+    span {
+      color: gray;
     }
   }
 
@@ -90,11 +90,6 @@ const StyledDropup = styled.div`
   /* Show the dropup menu on hover */
   &:hover .dropup-content {
     display: block;
-  }
-
-  /* Change the background color of the dropup button when the dropup content is shown */
-  &:hover .dropbtn {
-    background-color: #444f53;
   }
 `;
 
