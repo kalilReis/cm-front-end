@@ -1,9 +1,9 @@
-import React from "react"
-import styled from "styled-components"
-import { Product } from "../../store/ducks/products/types"
+import React from "react";
+import styled from "styled-components";
+import { Product } from "../../store/ducks/products/types";
 
 interface ProductListProps {
-  products: Product[]
+  products: Product[];
 }
 
 const ProductList: React.FC<ProductListProps> = ({ products }) => {
@@ -11,7 +11,7 @@ const ProductList: React.FC<ProductListProps> = ({ products }) => {
     <StyledListContainer>
       <ul>
         {products.map(prod => (
-          <li key={prod.id}>
+          <li key={prod._id}>
             <Image />
             <Image />
             <Image />
@@ -29,8 +29,8 @@ const ProductList: React.FC<ProductListProps> = ({ products }) => {
         ))}
       </ul>
     </StyledListContainer>
-  )
-}
+  );
+};
 
 const Image = () => (
   <div>
@@ -41,22 +41,23 @@ const Image = () => (
       alt=""
     />
   </div>
-)
+);
 
 const StyledListContainer = styled.div`
-  li {
-    border: 1px solid black;
-    width: 150vh;
-    height: 15vh;
+  ul {
+    max-width: 90%px;
+    li {
+      border: 1px solid black;
+      height: 9%;
+      display: grid;
+      grid-template-rows: repeat(6, 100%);
+      grid-template-columns: 10% 10% 10% 10% 30% 30%;
+      justify-content: center;
 
-    display: grid;
-    grid-template-rows: repeat(6, 100%);
-    grid-template-columns: 10% 10% 10% 10% 30% 30%;
-    justify-content: center;
-
-    div {
-      margin: 6px;
+      div {
+        margin: 6px;
+      }
     }
   }
-`
-export default ProductList
+`;
+export default ProductList;

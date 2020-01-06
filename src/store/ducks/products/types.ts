@@ -33,7 +33,7 @@ export type ProducActionTypes = LoadRequestActionType | LoadSuccessActionType | 
  */
 
 export interface Product {
-  readonly id: string
+  readonly _id: string
   readonly name: string
   readonly type: string 
   readonly size: string 

@@ -38,8 +38,8 @@ const App: React.FC = () => {
             />
           </div>
         </div>
-        <div style={{ background: "hsl(0, 0%, 94%)" }}>
-          <h1>{search ? search : "Lista de produtos"}</h1>
+        <div className={"search-display"}>
+          <p>{search ? search : "Lista de produtos"}</p>
         </div>
         <div>
           <h4>{totalDocs} PRODUTOS ENCONTRADOS</h4>
@@ -80,7 +80,7 @@ const StyledHeader = styled.header`
   position: fixed;
   top: 0;
   width: 100%;
-  height: 100px;
+  height: 150px;
   border: 1px solid black;
   z-index: 99;
   background: #fff;
@@ -90,6 +90,15 @@ const StyledHeader = styled.header`
     flex-direction: row;
     justify-content: space-evenly;
     margin-top: 10px;
+  }
+
+  .search-display {
+    height: 300px;
+    background: hsl(0, 0%, 94%);
+    font-size: 50px;
+    p {
+      margin-left: 2rem;
+    }
   }
 `;
 

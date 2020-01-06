@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-
+import angleUpArrow from "../../icons/up-arrow.svg";
 interface DropupOption {
   id: number;
   label: string;
@@ -19,11 +19,21 @@ export const Dropup: React.FC<DropupProps> = ({ onChange, options }) => {
 
   return (
     <StyledDropup>
-      <button className="dropbtn">{picked.label}</button>
+      <button className="dropbtn">
+        <span>{picked.label}</span>
+        <img
+          src={angleUpArrow}
+          width={"12px"}
+          height={"12px"}
+          className="App-logo"
+          alt="logo"
+        />
+      </button>
       <div className="dropup-content">
         {options.map(option => {
           return (
             <a
+              style={picked.id == option.id ? { display: "none" } : {}}
               id={String(option.id)}
               onClick={() => {
                 setPicked(option);
@@ -41,23 +51,31 @@ export const Dropup: React.FC<DropupProps> = ({ onChange, options }) => {
 const StyledDropup = styled.div`
   position: relative;
   display: inline-block;
-  border: 1px solid black;
 
   .dropbtn {
-    width: 200px;
-    padding: 16px;
-    font-size: 16px;
+    width: 230px;
+    padding: 10px 1rem;
+    font-size: 1rem;
     border: none;
     background: white;
+    border: 1px solid black;
+    border-radius: 4px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    img {
+      margin-top: 3px;
+    }
   }
 
   /* Dropup content (Hidden by Default) */
   .dropup-content {
     display: none;
     position: absolute;
-    bottom: 50px;
+    bottom: 40px;
     background-color: white;
-    min-width: 200px;
+    min-width: 100%;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
   }
