@@ -53,7 +53,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
 const StyledSearchBar = styled.div`
   display: flex;
   flex-direction: row;
-  height: 1.5rem;
+  height: 2rem;
 
   input {
     border-left: none;
@@ -70,7 +70,7 @@ const StyledSearchBar = styled.div`
     justify-content: center;
 
     img {
-      width: 10px;
+      width: 15px;
     }
   }
 
@@ -83,7 +83,7 @@ const StyledSearchBar = styled.div`
     justify-content: center;
 
     img {
-      width: 12px;
+      width: 15px;
     }
 
     img.hide {

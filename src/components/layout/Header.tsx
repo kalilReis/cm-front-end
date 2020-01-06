@@ -30,7 +30,7 @@ export const Header: React.FC<HeaderProps> = ({
           <img src={logoIcon} width={"150px"} height={"100%"} />
         </div>
         <SearchBar
-          delay={50}
+          delay={1000}
           placeholder="Buscar Produtos"
           handleSearchValue={value => setSearch(value)}
         />
