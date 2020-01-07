@@ -27,7 +27,7 @@ export const Header: React.FC<HeaderProps> = ({
     <StyledHeader>
       <div className="top-header">
         <div className="top-header-content">
-          <img src={logoIcon} width={"150px"} height={"100%"} />
+          <img src={logoIcon} width={"150px"} height={"100%"} alt="logo-icon" />
         </div>
         <SearchBar
           delay={1000}

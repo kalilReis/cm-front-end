@@ -15,7 +15,7 @@ export const Dropup: React.FC<DropupProps> = ({ onChange, options }) => {
 
   useEffect(() => {
     onChange(picked);
-  }, [picked]);
+  }, [picked, onChange]);
 
   return (
     <StyledDropup>
@@ -24,11 +24,11 @@ export const Dropup: React.FC<DropupProps> = ({ onChange, options }) => {
         <img src={upArrow} width={"12px"} height={"12px"} alt="up-arrow" />
       </button>
       <div className="dropup-content">
-        {options.map(option => {
+        {options.map((option, index) => {
           return (
             <span
-              style={picked.id == option.id ? { display: "none" } : {}}
-              id={String(option.id)}
+              style={picked.id === option.id ? { display: "none" } : {}}
+              key={String(index + 1)}
               onClick={() => {
                 setPicked(option);
               }}

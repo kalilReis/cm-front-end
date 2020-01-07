@@ -28,7 +28,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
   return (
     <StyledSearchBar className="top-header-content">
       <div className="search-icon default-border">
-        <img src={searchIcon} />
+        <img src={searchIcon} alt="search-icon" />
       </div>
       <input
         className="default-border"
@@ -44,6 +44,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
           }}
           className={search ? "" : "hide"}
           src={removeIcon}
+          alt="remove-icon"
         />
       </div>
     </StyledSearchBar>

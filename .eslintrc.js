@@ -21,8 +21,9 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: "module"
   },
-  plugins: ["react", "import", "jsx-a11y"],
+  plugins: ["react","react-hooks", "import", "jsx-a11y"],
   rules: {
+    "react-hooks/exhaustive-deps": 0,
     "react/jsx-filename-extension": [
       "error",
       {
@@ -32,7 +33,6 @@ module.exports = {
     "import/prefer-default-export": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/explicit-member-accessibility": "off"
-  
   },
   settings: {
     "import/parsers": {
