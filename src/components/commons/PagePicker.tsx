@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import Pagination from "react-js-pagination";
-import next from "../../icons/next.svg";
 
 interface PagePickerProps {
   activePage: number;

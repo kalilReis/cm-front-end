@@ -2,6 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import { Product } from "../../store/ducks/products/types";
 
+const imgSrc =
+  "https://images-shoptime.b2w.io/produtos/01/00/oferta/28543/0/28543065_1GG.jpg";
+
 interface ProductListProps {
   products: Product[];
 }
@@ -12,10 +15,18 @@ const ProductList: React.FC<ProductListProps> = ({ products }) => {
       <ul>
         {products.map(prod => (
           <li key={prod._id}>
-            <Image />
-            <Image />
-            <Image />
-            <Image />
+            <div>
+              <img width="100%" height="100%" src={imgSrc} alt="" />
+            </div>
+            <div>
+              <img width="100%" height="100%" src={imgSrc} alt="" />
+            </div>
+            <div>
+              <img width="100%" height="100%" src={imgSrc} alt="" />
+            </div>
+            <div>
+              <img width="100%" height="100%" src={imgSrc} alt="" />
+            </div>
             <div className="prod-description">
               <span className="name">{prod.name}</span>
               <p>
@@ -33,17 +44,6 @@ const ProductList: React.FC<ProductListProps> = ({ products }) => {
     </StyledListContainer>
   );
 };
-
-const Image = () => (
-  <div>
-    <img
-      width="100%"
-      height="100%"
-      src="https://images-shoptime.b2w.io/produtos/01/00/oferta/28543/0/28543065_1GG.jpg"
-      alt=""
-    />
-  </div>
-);
 
 const StyledListContainer = styled.div`
   ul {

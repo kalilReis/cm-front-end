@@ -21,8 +21,6 @@ const GlobalStyle = createGlobalStyle`
         font-family: 'Source Sans Pro';
     }
 
-   
-
     ol, ul {
         list-style: none;
     }
@@ -34,9 +32,6 @@ const GlobalStyle = createGlobalStyle`
     .default-border {
         border: 1px solid rgb(153, 137, 124);
     }
-
-   
-
 
 `
 export default GlobalStyle

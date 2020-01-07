@@ -16,7 +16,7 @@ const App: React.FC = () => {
   const { products } = useSelector((state: ApplicationState) => state);
   const dispatch = useDispatch();
 
-  const { totalDocs } = products.data;
+  const { docs, totalDocs } = products.data;
 
   useEffect(() => {
     dispatch(load(search, activePage, pageLimit));
@@ -29,7 +29,7 @@ const App: React.FC = () => {
         handleSearchValue={value => setSearch(value)}
       />
       <StyledMain>
-        <ProductList products={products.data.docs} />
+        <ProductList products={docs} />
       </StyledMain>
       <StyledFooter>
         <div>
@@ -37,14 +37,15 @@ const App: React.FC = () => {
             options={[
               { id: 4, label: "4 produtos por página" },
               { id: 8, label: "8 produtos por página" },
-              { id: 16, label: "16 produtos por página" }
+              { id: 16, label: "16 produtos por página" },
+              { id: 32, label: "32 produtos por página" }
             ]}
             onChange={option => setPageLimit(option.id)}
           />
         </div>
         <PagePicker
           activePage={activePage}
-          itemsCountPerPage={10}
+          itemsCountPerPage={pageLimit}
           totalItemsCount={totalDocs}
           pageRangeDisplayed={7}
           onChange={page => setActivePage(page)}
