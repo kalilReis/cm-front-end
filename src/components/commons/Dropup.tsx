@@ -21,12 +21,12 @@ export const Dropup: React.FC<DropupProps> = ({ onChange, options }) => {
     <StyledDropup>
       <button className="dropbtn default-border">
         <span>{picked.label}</span>
-        <img src={upArrow} width={"12px"} height={"12px"} />
+        <img src={upArrow} width={"12px"} height={"12px"} alt="up-arrow" />
       </button>
       <div className="dropup-content">
         {options.map(option => {
           return (
-            <a
+            <span
               style={picked.id == option.id ? { display: "none" } : {}}
               id={String(option.id)}
               onClick={() => {
@@ -34,7 +34,7 @@ export const Dropup: React.FC<DropupProps> = ({ onChange, options }) => {
               }}
             >
               {option.label}
-            </a>
+            </span>
           );
         })}
       </div>
@@ -75,14 +75,14 @@ const StyledDropup = styled.div`
   }
 
   /* Links inside the dropup */
-  .dropup-content a {
+  .dropup-content span {
     padding: 12px 16px;
     text-decoration: none;
     display: block;
   }
 
   /* Change color of dropup links on hover */
-  .dropup-content a:hover {
+  .dropup-content span:hover {
     background-color: #ddd;
     cursor: pointer;
   }
