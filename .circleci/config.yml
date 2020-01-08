@@ -15,7 +15,7 @@ jobs:
       - save_cache:
           paths:
             - ./build
-            - ./node_modules
+
           key: dependency-cache-{{ checksum "yarn.lock" }}
 
   deploy:
@@ -26,11 +26,12 @@ jobs:
       - restore_cache:
           key: dependency-cache-{{ checksum "yarn.lock" }}
       - run: |
+          ls
           pip install awscli
           aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
           aws configure set aws_secret_access $AWS_SECRET_ACCESS_KEY
           aws s3 rm s3://cm-front-end --recursive
-          aws s3 sync ./build s3://cm-front-end --acl public-read
+          aws s3 sync /home/circleci/repo/build s3://cm-front-end --acl public-read
 
 workflows:
   version: 2
