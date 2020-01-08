@@ -4,25 +4,35 @@ import styled from "styled-components";
 import SearchBar from "../commons/SearchBar";
 import { useSelector, useDispatch } from "react-redux";
 import { ApplicationState } from "../../store";
-import { load } from "../../store/ducks/products/actions";
+import {
+  setSearchValueAction,
+  setDebugAction
+} from "../../store/ducks/products/actions";
 import CounterRenders from "../commons/CounterRenders";
-import { ProductsTypes } from "../../store/ducks/products/types";
 
 export const Header: React.FC = () => {
-  const [search, setSearch] = useState("");
-  const [isDebug, setDebug] = useState(true);
   const { products } = useSelector((state: ApplicationState) => state);
-  const dispatch = useDispatch();
-  const { limit, page, totalDocs } = products.data;
+  const { totalDocs, search } = products.data;
+  const { debug } = products;
+
+  const [searchValue, setSearchValue] = useState(search);
+  const [isDebug, setDebug] = useState(debug);
+  const dispatcher = useDispatch();
+
+  const timeoutRef = useRef(0);
 
   useEffect(() => {
-    dispatch(load(search, page, limit));
-  }, [search]);
+    if (isDebug !== products.debug) dispatcher(setDebugAction(isDebug));
+  }, [isDebug, searchValue, products.debug, dispatcher]);
 
   useEffect(() => {
-    if (isDebug != products.debug)
-      dispatch({ type: ProductsTypes.DEBUG, payload: isDebug });
-  }, [isDebug]);
+    if (timeoutRef.current !== 0) {
+      clearTimeout(timeoutRef.current);
+    }
+    timeoutRef.current = setTimeout(function() {
+      dispatcher(setSearchValueAction(searchValue));
+    }, 500);
+  }, [searchValue, dispatcher]);
 
   return (
     <StyledHeader>
@@ -39,7 +49,7 @@ export const Header: React.FC = () => {
         </div>
         <SearchBar
           placeholder="Buscar Produtos"
-          handleSearchValue={value => setSearch(value)}
+          handleSearchValue={value => setSearchValue(value)}
         />
       </div>
       <div className="search-display-container">

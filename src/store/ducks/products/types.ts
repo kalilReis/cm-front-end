@@ -3,35 +3,49 @@
  */
 
 export enum ProductsTypes {
-  LOAD_REQUEST = "@products/LOAD_REQUEST",
   LOAD_SUCCESS = "@products/LOAD_SUCCESS",
-  LOAD_FAILURE = "@products/LOAD_FAILURE",
-  DEBUG = "@products/DEBUG"
+  DEBUG = "@products/DEBUG",
+  SET_PAGE_LIMIT = "@products/SET_PAGE_LIMIT",
+  SET_PAGE = "@products/SET_PAGE",
+  SET_SEARCH_VALUE = "@products/SET_SEARCH_VALUE"
 }
 
 /**
  * ActionTypes
  */
 
-export interface LoadRequestActionType {
-  type: ProductsTypes.LOAD_REQUEST
-}
 
 export interface LoadSuccessActionType {
   type: ProductsTypes.LOAD_SUCCESS
   payload: ProductPagination
 }
 
-export interface LoadFailureActionType {
-  type: ProductsTypes.LOAD_FAILURE
-}
 
 export interface Debug {
   type: ProductsTypes.DEBUG
   payload: boolean
 }
 
-export type ProducActionTypes = LoadRequestActionType | LoadSuccessActionType | LoadFailureActionType | Debug
+export interface SetPageLimit {
+  type: ProductsTypes.SET_PAGE_LIMIT
+  payload: number
+}
+
+export interface SetPage {
+  type: ProductsTypes.SET_PAGE
+  payload: number
+}
+
+export interface SetSearchValue {
+  type: ProductsTypes.SET_SEARCH_VALUE
+  payload: string 
+}
+export type ProducActionTypes = 
+  LoadSuccessActionType | 
+  Debug | 
+  SetPageLimit | 
+  SetPage | 
+  SetSearchValue
 
 /**
  * 

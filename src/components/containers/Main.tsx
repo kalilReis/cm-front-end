@@ -1,13 +1,19 @@
-import React, { useRef } from "react";
+import React, { useEffect } from "react";
 import ProductList from "../product/ProductList";
 import styled from "styled-components";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { ApplicationState } from "../../store";
 import CounterRenders from "../commons/CounterRenders";
+import { loadAction } from "../../store/ducks/products/actions";
 
 const Main: React.FC = () => {
   const { products } = useSelector((state: ApplicationState) => state);
-  const { docs } = products.data;
+  const { docs, search, limit, page } = products.data;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadAction(search, page, limit));
+  }, [limit, page, search, dispatch]);
 
   return (
     <StyledMain>

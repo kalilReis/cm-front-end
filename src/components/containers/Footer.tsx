@@ -1,23 +1,27 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import PagePicker from "../commons/PagePicker";
 import styled from "styled-components";
 import Dropup from "../commons/Dropup";
 import { useSelector, useDispatch } from "react-redux";
 import { ApplicationState } from "../../store";
-import { load } from "../../store/ducks/products/actions";
+import {
+  setPageLimitAction,
+  setPageAction
+} from "../../store/ducks/products/actions";
 import CounterRenders from "../commons/CounterRenders";
 
 const Footer: React.FC = () => {
-  const [activePage, setActivePage] = useState(1);
-  const [pageLimit, setPageLimit] = useState(4);
-
   const { products } = useSelector((state: ApplicationState) => state);
   const dispatch = useDispatch();
-  const { totalDocs, search } = products.data;
+
+  const { limit, totalDocs, page } = products.data;
+  const [activePage, setActivePage] = useState(page);
+  const [pageLimit, setPageLimit] = useState(limit);
 
   useEffect(() => {
-    dispatch(load(search, activePage, pageLimit));
-  }, [pageLimit, activePage]);
+    if (pageLimit !== limit) dispatch(setPageLimitAction(pageLimit));
+    if (activePage !== page) dispatch(setPageAction(activePage));
+  }, [pageLimit, activePage, dispatch, limit, page]);
 
   return (
     <StyledFooter>

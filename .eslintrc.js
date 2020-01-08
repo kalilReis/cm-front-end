@@ -23,7 +23,8 @@ module.exports = {
   },
   plugins: ["react","react-hooks", "import", "jsx-a11y"],
   rules: {
-    "react-hooks/exhaustive-deps": 0,
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
     "react/jsx-filename-extension": [
       "error",
       {
