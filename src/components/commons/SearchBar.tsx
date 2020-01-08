@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import searchIcon from "../../icons/search.svg";
 import removeIcon from "../../icons/remove.svg";
-import RendCount from "./RendCounter";
+import CounterRenders from "./CounterRenders";
 
 interface SearchBarProps {
   placeholder: string;
@@ -21,7 +21,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
 
   return (
     <StyledSearchBar className="top-header-content">
-      <RendCount label={"search-bar"} />
+      <CounterRenders label={"search-bar"} />
       <div className="search-icon default-border">
         <img src={searchIcon} alt="search-icon" />
       </div>

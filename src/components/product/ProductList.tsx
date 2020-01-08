@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Product } from "../../store/ducks/products/types";
-import RendCount from "../commons/RendCounter";
+import CounterRenders from "../commons/CounterRenders";
 
 const imgSrc =
   "https://images-shoptime.b2w.io/produtos/01/00/oferta/28543/0/28543065_1GG.jpg";
@@ -13,7 +13,7 @@ interface ProductListProps {
 const ProductList: React.FC<ProductListProps> = ({ products }) => {
   return (
     <StyledListContainer>
-      <RendCount label={"prod-list"} />
+      <CounterRenders label={"prod-list"} />
       <ul>
         {products.map(prod => (
           <li key={prod._id}>

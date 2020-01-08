@@ -5,7 +5,7 @@ import SearchBar from "../commons/SearchBar";
 import { useSelector, useDispatch } from "react-redux";
 import { ApplicationState } from "../../store";
 import { load } from "../../store/ducks/products/actions";
-import RendCount from "../commons/RendCounter";
+import CounterRenders from "../commons/CounterRenders";
 import { ProductsTypes } from "../../store/ducks/products/types";
 
 export const Header: React.FC = () => {
@@ -35,7 +35,7 @@ export const Header: React.FC = () => {
             alt="logo-icon"
             onClick={() => setDebug(!isDebug)}
           />
-          <RendCount label={"header"} />
+          <CounterRenders label={"header"} />
         </div>
         <SearchBar
           placeholder="Buscar Produtos"

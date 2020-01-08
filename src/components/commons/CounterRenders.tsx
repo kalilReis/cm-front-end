@@ -2,10 +2,10 @@ import React, { useRef } from "react";
 import { useSelector } from "react-redux";
 import { ApplicationState } from "../../store";
 
-interface RenderCounter {
+interface CounterRendersProps {
   label: string;
 }
-const RendCounter: React.FC<RenderCounter> = ({ label }) => {
+const CounterRenders: React.FC<CounterRendersProps> = ({ label }) => {
   const { products } = useSelector((state: ApplicationState) => state);
   const renders = useRef(0);
   return (
@@ -15,4 +15,4 @@ const RendCounter: React.FC<RenderCounter> = ({ label }) => {
   );
 };
 
-export default RendCounter;
+export default CounterRenders;

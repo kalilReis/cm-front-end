@@ -3,7 +3,7 @@ import ProductList from "../product/ProductList";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { ApplicationState } from "../../store";
-import RendCount from "../commons/RendCounter";
+import CounterRenders from "../commons/CounterRenders";
 
 const Main: React.FC = () => {
   const { products } = useSelector((state: ApplicationState) => state);
@@ -11,7 +11,7 @@ const Main: React.FC = () => {
 
   return (
     <StyledMain>
-      <RendCount label={"main"} />
+      <CounterRenders label={"main"} />
       <ProductList products={docs} />
     </StyledMain>
   );

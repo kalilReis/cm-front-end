@@ -5,7 +5,7 @@ import Dropup from "../commons/Dropup";
 import { useSelector, useDispatch } from "react-redux";
 import { ApplicationState } from "../../store";
 import { load } from "../../store/ducks/products/actions";
-import RendCount from "../commons/RendCounter";
+import CounterRenders from "../commons/CounterRenders";
 
 const Footer: React.FC = () => {
   const [activePage, setActivePage] = useState(1);
@@ -21,7 +21,7 @@ const Footer: React.FC = () => {
 
   return (
     <StyledFooter>
-      <RendCount label={"footer"} />
+      <CounterRenders label={"footer"} />
       <div className="item-2">
         <Dropup
           options={[
