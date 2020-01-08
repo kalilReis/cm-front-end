@@ -12,7 +12,7 @@ const INITIAL_STATE: ProductsState = {
   },
   error: false,
   loading: false,
-  debug: true
+  debug: false
 }
 
 export function  productReducer(state = INITIAL_STATE, action: ProducActionTypes) {

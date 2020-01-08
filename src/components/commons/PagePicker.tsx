@@ -2,6 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import Pagination from "react-js-pagination";
 import CounterRenders from "./CounterRenders";
+import lastPage from "../../icons/last-page.svg";
+import firstPage from "../../icons/first-page.svg";
+import nextPage from "../../icons/next-page.svg";
+import prevPage from "../../icons/prev-page.svg";
 
 interface PagePickerProps {
   activePage: number;
@@ -16,10 +20,10 @@ const PagePicker: React.FC<PagePickerProps> = props => {
     <StyledPagePicker>
       <CounterRenders label={"page-picker"} />
       <Pagination
-        firstPageText={"|<"}
-        lastPageText={">|"}
-        prevPageText={"<"}
-        nextPageText={">"}
+        firstPageText={<img src={firstPage} alt="first-page" />}
+        lastPageText={<img src={lastPage} alt="last-page" />}
+        prevPageText={<img src={prevPage} alt="prev-page" />}
+        nextPageText={<img src={nextPage} alt="next-page" />}
         activePage={props.activePage}
         itemsCountPerPage={props.itemsCountPerPage}
         totalItemsCount={props.totalItemsCount}
@@ -36,11 +40,13 @@ const StyledPagePicker = styled.div`
     flex-direction: row;
     li {
       background: #fff;
-      border: none;
       padding: 8px 1rem;
       a {
         color: inherit;
         text-decoration: none;
+        img {
+          width: 22px;
+        }
       }
     }
     .active {
