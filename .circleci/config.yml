@@ -20,7 +20,7 @@ jobs:
 
   deploy:
     docker:
-      - image: circleci/python:latest
+      - image: python:latest
     steps:
       - checkout
       - restore_cache:
