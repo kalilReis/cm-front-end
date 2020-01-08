@@ -15,14 +15,16 @@ jobs:
       - save_cache:
           paths:
             - ./build
-          key: dependency-cache-{{ checksum "package.json" }}
+            - ./node_modules
+          key: dependency-cache-{{ checksum "yarn.lock" }}
 
   deploy:
     docker:
       - image: circleci/python:latest
     steps:
+      - checkout
       - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          key: dependency-cache-{{ checksum "yarn.lock" }}
       - run: |
           pip install awscli
           aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
