@@ -20,8 +20,15 @@ const Footer: React.FC = () => {
 
   useEffect(() => {
     if (pageLimit !== limit) dispatch(setPageLimitAction(pageLimit));
-    if (activePage !== page) dispatch(setPageAction(activePage));
-  }, [pageLimit, activePage, dispatch, limit, page]);
+  }, [pageLimit, dispatch, limit]);
+
+  useEffect(() => {
+    dispatch(setPageAction(activePage));
+  }, [activePage, dispatch]);
+
+  useEffect(() => {
+    setActivePage(page);
+  }, [page]);
 
   return (
     <StyledFooter>

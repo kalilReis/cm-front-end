@@ -25,11 +25,11 @@ export function  productReducer(state = INITIAL_STATE, action: ProducActionTypes
         data: action.payload
       }
     case ProductsTypes.SET_PAGE_LIMIT: 
-      return {...state, data: {...state.data, limit: action.payload} }
+      return {...state, data: {...state.data, limit: action.payload, page: 1, search: ""} }
     case ProductsTypes.SET_PAGE: 
       return {...state, data: {...state.data, page: action.payload} }
     case ProductsTypes.SET_SEARCH_VALUE: 
-      return {...state, data: {...state.data, search: action.payload} }
+      return {...state, data: {...state.data, search: action.payload, page: 1} }
     default:
       return state
   }
