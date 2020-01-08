@@ -5,7 +5,8 @@
 export enum ProductsTypes {
   LOAD_REQUEST = "@products/LOAD_REQUEST",
   LOAD_SUCCESS = "@products/LOAD_SUCCESS",
-  LOAD_FAILURE = "@products/LOAD_FAILURE"
+  LOAD_FAILURE = "@products/LOAD_FAILURE",
+  DEBUG = "@products/DEBUG"
 }
 
 /**
@@ -25,7 +26,12 @@ export interface LoadFailureActionType {
   type: ProductsTypes.LOAD_FAILURE
 }
 
-export type ProducActionTypes = LoadRequestActionType | LoadSuccessActionType | LoadFailureActionType
+export interface Debug {
+  type: ProductsTypes.DEBUG
+  payload: boolean
+}
+
+export type ProducActionTypes = LoadRequestActionType | LoadSuccessActionType | LoadFailureActionType | Debug
 
 /**
  * 
@@ -48,7 +54,7 @@ export interface Pagination {
   readonly nextPage?: number
   readonly totalPages?: number
   readonly page?: number
-  readonly perPage?: number
+  readonly limit?: number
 }
 
 export interface ProductPagination {
@@ -58,6 +64,7 @@ export interface ProductPagination {
   totalPages: number
   page: number
   pagingCounter: number
+  search: string 
 }
 /**
  * State type
@@ -65,6 +72,7 @@ export interface ProductPagination {
 
 export interface ProductsState {
   readonly data: ProductPagination
+  readonly debug: boolean
   readonly loading: boolean
   readonly error: boolean
 }

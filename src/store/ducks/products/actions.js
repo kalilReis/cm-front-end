@@ -1,12 +1,12 @@
 import { ProductsTypes } from "./types"
 import api from "../../../services/api"
 
-export const load = (q, page, perPage) => async dispatch => {
+export const load = (search, page, perPage) => async dispatch => {
   try {
     const res = await api.get(
-      `/products?q=${q}&page=${page}&limit=${perPage}`
+      `/products?q=${search}&page=${page}&limit=${perPage}`
     )
-    dispatch({ type: ProductsTypes.LOAD_SUCCESS, payload: res.data })
+    dispatch({ type: ProductsTypes.LOAD_SUCCESS, payload: {...res.data, search: search}})
   } catch (error) {
     console.log(error)
   }

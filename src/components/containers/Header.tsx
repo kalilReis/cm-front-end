@@ -1,36 +1,43 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import logoIcon from "../../icons/logo.svg";
 import styled from "styled-components";
 import SearchBar from "../commons/SearchBar";
+import { useSelector, useDispatch } from "react-redux";
+import { ApplicationState } from "../../store";
+import { load } from "../../store/ducks/products/actions";
+import RendCount from "../commons/RendCounter";
+import { ProductsTypes } from "../../store/ducks/products/types";
 
-interface HeaderProps {
-  totalProducts: number;
-  handleSearchValue: (value: string) => void;
-}
-
-export const Header: React.FC<HeaderProps> = ({
-  totalProducts,
-  handleSearchValue
-}) => {
+export const Header: React.FC = () => {
   const [search, setSearch] = useState("");
-  const [timer, setTimer] = useState();
+  const [isDebug, setDebug] = useState(true);
+  const { products } = useSelector((state: ApplicationState) => state);
+  const dispatch = useDispatch();
+  const { limit, page, totalDocs } = products.data;
 
   useEffect(() => {
-    clearTimeout(timer);
-    var timeout = setTimeout(function() {
-      handleSearchValue(search);
-    }, 1000);
-    setTimer(timeout);
+    dispatch(load(search, page, limit));
   }, [search]);
+
+  useEffect(() => {
+    if (isDebug != products.debug)
+      dispatch({ type: ProductsTypes.DEBUG, payload: isDebug });
+  }, [isDebug]);
 
   return (
     <StyledHeader>
       <div className="top-header">
         <div className="top-header-content">
-          <img src={logoIcon} width={"150px"} height={"100%"} alt="logo-icon" />
+          <img
+            src={logoIcon}
+            width={"150px"}
+            height={"100%"}
+            alt="logo-icon"
+            onClick={() => setDebug(!isDebug)}
+          />
+          <RendCount label={"header"} />
         </div>
         <SearchBar
-          delay={1000}
           placeholder="Buscar Produtos"
           handleSearchValue={value => setSearch(value)}
         />
@@ -38,7 +45,7 @@ export const Header: React.FC<HeaderProps> = ({
       <div className="search-display-container">
         <div>
           <p>{search ? search : "Lista de produtos"}</p>
-          <h4>{totalProducts} PRODUTOS ENCONTRADOS</h4>
+          <h4>{totalDocs} PRODUTOS ENCONTRADOS</h4>
         </div>
       </div>
     </StyledHeader>

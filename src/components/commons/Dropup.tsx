@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import upArrow from "../../icons/up-arrow.svg";
+import RendCount from "./RendCounter";
+
 interface DropupOption {
   id: number;
   label: string;
@@ -19,6 +21,7 @@ export const Dropup: React.FC<DropupProps> = ({ onChange, options }) => {
 
   return (
     <StyledDropup>
+      <RendCount label={"dropup"} />
       <button className="dropbtn default-border">
         <span>{picked.label}</span>
         <img src={upArrow} width={"12px"} height={"12px"} alt="up-arrow" />

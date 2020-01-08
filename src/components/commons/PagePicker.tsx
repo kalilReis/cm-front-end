@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Pagination from "react-js-pagination";
+import RendCount from "./RendCounter";
 
 interface PagePickerProps {
   activePage: number;
@@ -13,6 +14,7 @@ interface PagePickerProps {
 const PagePicker: React.FC<PagePickerProps> = props => {
   return (
     <StyledPagePicker>
+      <RendCount label={"page-picker"} />
       <Pagination
         firstPageText={"|<"}
         lastPageText={">|"}

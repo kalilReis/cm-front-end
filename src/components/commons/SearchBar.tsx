@@ -2,31 +2,26 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import searchIcon from "../../icons/search.svg";
 import removeIcon from "../../icons/remove.svg";
+import RendCount from "./RendCounter";
 
 interface SearchBarProps {
-  delay: number;
   placeholder: string;
   handleSearchValue: (value: string) => void;
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({
-  delay,
   placeholder,
   handleSearchValue
 }) => {
   const [search, setSearch] = useState("");
-  const [timer, setTimer] = useState();
 
   useEffect(() => {
-    clearTimeout(timer);
-    var timeout = setTimeout(function() {
-      handleSearchValue(search);
-    }, delay);
-    setTimer(timeout);
-  }, [search]);
+    handleSearchValue(search);
+  }, [search, handleSearchValue]);
 
   return (
     <StyledSearchBar className="top-header-content">
+      <RendCount label={"search-bar"} />
       <div className="search-icon default-border">
         <img src={searchIcon} alt="search-icon" />
       </div>
