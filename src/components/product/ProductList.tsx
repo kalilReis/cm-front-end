@@ -17,17 +17,17 @@ const ProductList: React.FC<ProductListProps> = ({ products }) => {
       <ul>
         {products.map(prod => (
           <li key={prod._id}>
-            <div>
+            <div className="prod-img">
               <img width="100%" height="100%" src={imgSrc} alt="" />
             </div>
-            <div>
-              <img width="100%" height="100%" src={imgSrc} alt="" />
+            <div className="prod-img">
+              <img  width="100%" height="100%" src={imgSrc} alt="" />
             </div>
-            <div>
-              <img width="100%" height="100%" src={imgSrc} alt="" />
+            <div className="prod-img">
+              <img  width="100%" height="100%" src={imgSrc} alt="" />
             </div>
-            <div>
-              <img width="100%" height="100%" src={imgSrc} alt="" />
+            <div className="prod-img">
+              <img  width="100%" height="100%" src={imgSrc} alt="" />
             </div>
             <div className="prod-description">
               <span className="name">{prod.name}</span>
@@ -52,17 +52,24 @@ const StyledListContainer = styled.div`
     border: 1px solid rgb(153, 137, 124);
 
     li {
+      .prod-img {
+        width: 100%;
+        height: 100%;
+        padding: 3% 0;
+        padding-left: 3%;
+      }
+
       border-bottom: 1px solid rgb(153, 137, 124);
-      height: 10%;
       display: grid;
       grid-template-rows: repeat(6, 100%);
       grid-template-columns: 10% 10% 10% 10% 30% 30%;
       grid-template-areas: "img-a img-b img-c img-d description prices";
 
+     
       .prod-description {
         grid-area: description;
         align-self: center;
-        margin-left: 5%;
+        margin-left: 10%;
         .name {
           color: black;
         }
@@ -83,9 +90,7 @@ const StyledListContainer = styled.div`
         }
       }
 
-      div {
-        margin: 6px;
-      }
+      
     }
 
     li:last-child {
