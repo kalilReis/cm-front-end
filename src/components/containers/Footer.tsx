@@ -50,7 +50,7 @@ const Footer: React.FC = () => {
           activePage={activePage}
           itemsCountPerPage={pageLimit}
           totalItemsCount={totalDocs}
-          pageRangeDisplayed={7}
+          pageRangeDisplayed={5}
           onChange={page => setActivePage(page)}
         />
       </div>

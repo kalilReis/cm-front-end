@@ -27,7 +27,7 @@ const PagePicker: React.FC<PagePickerProps> = props => {
         activePage={props.activePage}
         itemsCountPerPage={props.itemsCountPerPage}
         totalItemsCount={props.totalItemsCount}
-        pageRangeDisplayed={7}
+        pageRangeDisplayed={props.pageRangeDisplayed}
         onChange={page => props.onChange(page)}
       />
     </StyledPagePicker>
