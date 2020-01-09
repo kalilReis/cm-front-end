@@ -49,6 +49,12 @@ const StyledPagePicker = styled.div`
         }
       }
     }
+
+    li:nth-child(1),
+    li:nth-last-child(1) {
+      padding: 8px 0;
+    }
+
     .active {
       border: 1px solid rgb(153, 137, 124);
       border-radius: 3px;
