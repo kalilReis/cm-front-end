@@ -9,6 +9,7 @@ import {
   setPageAction
 } from "../../store/ducks/products/actions";
 import CounterRenders from "../commons/CounterRenders";
+import { Theme } from "../../Theme";
 
 const Footer: React.FC = () => {
   const { products } = useSelector((state: ApplicationState) => state);
@@ -57,7 +58,7 @@ const Footer: React.FC = () => {
   );
 };
 
-const StyledFooter = styled.footer`
+const StyledFooter = styled.footer<Theme>`
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -66,7 +67,7 @@ const StyledFooter = styled.footer`
   background: #fff;
   padding: 0.5rem;
 
-  border-top: 1px solid;
+  border-top: ${props => props.theme.defaultBorder};
 
   display: grid;
   grid-template-columns: 4% 48% 48%;

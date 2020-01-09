@@ -1,9 +1,10 @@
 import { createGlobalStyle } from "styled-components"
 
-const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
     
     @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600&display=swap');
-
+   
+    /**CSS reset */
     html {
         box-sizing: border-box;
         font-size: 16px;
@@ -29,9 +30,6 @@ const GlobalStyle = createGlobalStyle`
         outline: 0 !important;
     }
 
-    .default-border {
-        border: 1px solid rgb(153, 137, 124);
-    }
 
 `
-export default GlobalStyle
+

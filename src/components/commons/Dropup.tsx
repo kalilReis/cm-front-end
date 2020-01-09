@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import upArrow from "../../icons/up-arrow.svg";
 import RendCount from "./CounterRenders";
+import { Theme } from "../../Theme";
 
 interface DropupOption {
   id: number;
@@ -22,7 +23,7 @@ export const Dropup: React.FC<DropupProps> = ({ onChange, options }) => {
   return (
     <StyledDropup>
       <RendCount label={"dropup"} />
-      <button className="dropbtn default-border">
+      <button className="dropbtn">
         <span>{picked.label}</span>
         <img src={upArrow} width={"12px"} height={"12px"} alt="up-arrow" />
       </button>
@@ -45,7 +46,7 @@ export const Dropup: React.FC<DropupProps> = ({ onChange, options }) => {
   );
 };
 
-const StyledDropup = styled.div`
+const StyledDropup = styled.div<Theme>`
   position: relative;
   display: inline-block;
 
@@ -54,6 +55,7 @@ const StyledDropup = styled.div`
     padding: 8px 1rem;
     font-size: 1rem;
     background: white;
+    border: ${props => props.theme.defaultBorder};
     border-radius: 4px;
     display: flex;
     flex-direction: row;

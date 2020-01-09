@@ -3,6 +3,7 @@ import styled from "styled-components";
 import searchIcon from "../../icons/search.svg";
 import removeIcon from "../../icons/remove.svg";
 import CounterRenders from "./CounterRenders";
+import { Theme } from "../../Theme";
 
 interface SearchBarProps {
   placeholder: string;
@@ -22,17 +23,16 @@ const SearchBar: React.FC<SearchBarProps> = ({
   return (
     <StyledSearchBar className="top-header-content">
       <CounterRenders label={"search-bar"} />
-      <div className="search-icon default-border">
+      <div className="search-icon">
         <img src={searchIcon} alt="search-icon" />
       </div>
       <input
-        className="default-border"
         value={search}
         placeholder={placeholder}
         type="text"
         onChange={e => setSearch(e.target.value)}
       />
-      <div className="remove-icon default-border">
+      <div className="remove-icon">
         <img
           onClick={() => {
             setSearch("");
@@ -46,18 +46,20 @@ const SearchBar: React.FC<SearchBarProps> = ({
   );
 };
 
-const StyledSearchBar = styled.div`
+const StyledSearchBar = styled.div<Theme>`
   display: flex;
   flex-direction: row;
   height: 2rem;
 
   input {
+    border: ${props => props.theme.defaultBorder};
     border-left: none;
     border-right: none;
     width: 300px;
   }
 
   .search-icon {
+    border: ${props => props.theme.defaultBorder};
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
     border-right: none;
@@ -71,6 +73,7 @@ const StyledSearchBar = styled.div`
   }
 
   .remove-icon {
+    border: ${props => props.theme.defaultBorder};
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
     border-left: none;

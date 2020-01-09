@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Product } from "../../store/ducks/products/types";
 import CounterRenders from "../commons/CounterRenders";
+import { Theme } from "../../Theme";
 
 const imgSrc =
   "https://images-shoptime.b2w.io/produtos/01/00/oferta/28543/0/28543065_1GG.jpg";
@@ -47,9 +48,9 @@ const ProductList: React.FC<ProductListProps> = ({ products }) => {
   );
 };
 
-const StyledListContainer = styled.div`
+const StyledListContainer = styled.div<Theme>`
   ul {
-    border: 1px solid rgb(153, 137, 124);
+    border: ${props => props.theme.defaultBorder};
 
     li {
       .prod-img {
@@ -59,7 +60,7 @@ const StyledListContainer = styled.div`
         padding-left: 3%;
       }
 
-      border-bottom: 1px solid rgb(153, 137, 124);
+      border-bottom: ${props => props.theme.defaultBorder};
       display: grid;
       grid-template-rows: repeat(6, 100%);
       grid-template-columns: 10% 10% 10% 10% 30% 30%;
