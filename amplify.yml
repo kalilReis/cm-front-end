@@ -1,0 +1,13 @@
+version: 0.1
+
+test:
+  phases:
+    preTest:
+      commands:
+        - yarn install
+        - yarn install wait-on
+        - 'yarn start & yarn wait-on http://localhost:3000'
+    test:
+      commands:
+        - 'npx cypress run --record --key $CYPRESS_KEY'
+  
