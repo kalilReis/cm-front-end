@@ -18,7 +18,9 @@ const Main: React.FC = () => {
   return (
     <StyledMain>
       <CounterRenders label={"main"} />
-      <ProductList products={docs} />
+      <div className="prod-list">
+        <ProductList products={docs} />
+      </div>
     </StyledMain>
   );
 };
@@ -27,7 +29,11 @@ const StyledMain = styled.main`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 200px;
+
+  .prod-list {
+    margin: 200px;
+  }
+  
 `;
 
 export default Main;
