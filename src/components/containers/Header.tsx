@@ -55,7 +55,7 @@ export const Header: React.FC = () => {
       <div className="search-display-container">
         <div>
           <p>{search ? search : "Lista de produtos"}</p>
-          <h4>{totalDocs} PRODUTOS ENCONTRADOS</h4>
+          <h4>{ totalDocs == 1 ? `1 PRODUTO ENCONTRADO` : `${totalDocs} PRODUTOS ENCONTRADOS`}</h4>
         </div>
       </div>
     </StyledHeader>
